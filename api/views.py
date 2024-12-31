@@ -1,5 +1,8 @@
 from django.http import HttpResponse
+from rest_framework import viewsets
+from .models import Recipe
+from .serializers import RecipeSerializer
 
-
-def index(request):
-    return HttpResponse("Hello, world. You're at the zelda index.")
+class RecipeViewSet(viewsets.ModelViewSet):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
